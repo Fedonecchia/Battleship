@@ -467,10 +467,10 @@ while ready == "N":
 				printboard(1, 0)
 				mov = input("Can't go there!\n")
 			else:
-				for piece in shipsp1[num]:
+				for piece in reversed(shipsp1[num]):
 					shipsp1[num][shipsp1[num].index(piece)] = board1[board1.index(piece)+10]
 		if mov == "A":
-			if board1.index(shipsp1[num][0]) == 1 or len(str(board1.index(shipsp1[num][-1]))) == 2 and str(board1.index(shipsp1[0]))[1] == 1:
+			if board1.index(shipsp1[num][0]) == 0 or len(str(board1.index(shipsp1[num][0]))) == 2 and str(board1.index(shipsp1[num][0]))[1] == 0:
 				printboard(1, 0)
 				mov = input("Can't go there!\n")
 			else:
@@ -481,7 +481,7 @@ while ready == "N":
 				printboard(1, 0)
 				mov = input("Can't go there!\n")
 			else:
-				for piece in shipsp1[num]:
+				for piece in reversed(shipsp1[num]):
 					shipsp1[num][shipsp1[num].index(piece)] = board1[board1.index(piece)+1]
 		check(p1)
 		printboard(1, 0)
@@ -504,9 +504,9 @@ while ready == "N":
 	movit = "Y"
 	while movit == "Y":
 		print("Where do you want to move ship number ", num+1, "? (Use WASD followed by Enter)\n", sep="")
-	mov = input("").upper()
-	if len(mov) > 1:
-		mov = input("Please only type one direction\n").upper()
+		mov = input("").upper()
+		if len(mov) > 1:
+			mov = input("Please only type one direction\n").upper()
 		if mov == "W":
 			if board2.index(shipsp2[num][0]) < 10:
 				printboard(2, 0)
@@ -519,7 +519,7 @@ while ready == "N":
 				printboard(2, 0)
 				mov = input("Can't go there!\n")
 			else:
-				for piece in shipsp2[num]:
+				for piece in reversed(shipsp2[num]):
 					shipsp2[num][shipsp2[num].index(piece)] = board2[board2.index(piece)+10]
 		if mov == "A":
 			if board2.index(shipsp2[num][0]) == 0 or len(str(board2.index(shipsp2[num][0]))) == 2 and str(board2.index(shipsp2[0]))[1] == "0":
@@ -533,7 +533,7 @@ while ready == "N":
 				printboard(2, 0)
 				mov = input("Can't go there!\n")
 			else:
-				for piece in shipsp2[num]:
+				for piece in reversed(shipsp2[num]):
 					shipsp2[num][shipsp2[num].index(piece)] = board2[board2.index(piece)+1]
 		check(p2)
 		printboard(2, 0)

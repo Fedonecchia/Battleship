@@ -477,7 +477,7 @@ while ready == "N":
 					for piece in shipsp1[num]:
 						shipsp1[num][shipsp1[num].index(piece)] = board1[board1.index(piece)-1]
 			if mov == "D":
-				if board1.index(shipsp1[num][-1]) == 9 len(str(board1.index(shipsp1[num][-1]))) == 2 and str(board1.index(shipsp1[num][-1]))[1] == "9":
+				if board1.index(shipsp1[num][-1]) == 9 or len(str(board1.index(shipsp1[num][-1]))) == 2 and str(board1.index(shipsp1[num][-1]))[1] == "9":
 					printboard(1, 0)
 					mov = input("Can't go there!\n")
 				else:

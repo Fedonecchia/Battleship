@@ -532,7 +532,7 @@ while ready == "N":
 					printboard(2, 0)
 					mov = input("Can't go there!\n")
 				else:
-					for piece in shipsp2[num]
+					for piece in shipsp2[num]:
 						shipsp2[num][shipsp2[num].index(piece)] = board2[board2.index(piece)+1]
 		check(p2)
 		printboard(2, 0)

@@ -455,34 +455,91 @@ while ready == "N":
 		mov = input("").upper()
 		if len(mov) > 1:
 			mov = input("Please only type one direction\n").upper()
-		for piece in shipsp1[num]:
 			if mov == "W":
 				if board1.index(shipsp1[num][0]) < 10:
 					printboard(1, 0)
-					print(shipsp1[num])
 					mov = input("Can't go there!\n")
-				shipsp1[num][shipsp1[num].index(piece)] = board1[board1.index(piece)-10]
-				print(shipsp1[num])
+				else:
+					for piece in shipsp1[num]:
+						shipsp1[num][shipsp1[num].index(piece)] = board1[board1.index(piece)-10]
 			if mov == "S":
 				if board1.index(shipsp1[num][-1]) > 90:
 					printboard(1, 0)
 					mov = input("Can't go there!\n")
-				shipsp1[num][shipsp1[num].index(piece)] = board1[board1.index(piece)+10]
+				else:
+					for piece in shipsp1[num]:
+						shipsp1[num][shipsp1[num].index(piece)] = board1[board1.index(piece)+10]
 			if mov == "A":
-				if board1.index(shipsp1[num][0]) == 1 or str(board1.index(shipsp1[0]))[1] == 1:
+				if board1.index(shipsp1[num][0]) == 1 or len(str(board1.index(shipsp1[num][-1]))) == 2 and str(board1.index(shipsp1[0]))[1] == 1:
 					printboard(1, 0)
 					mov = input("Can't go there!\n")
-				shipsp1[num][shipsp1[num].index(piece)] = board1[board1.index(piece)-1]
+				else:
+					for piece in shipsp1[num]:
+						shipsp1[num][shipsp1[num].index(piece)] = board1[board1.index(piece)-1]
 			if mov == "D":
-				if len(str(board1.index(shipsp1[num][-1]))) == 2 and str(board1.index(shipsp1[num][-1]))[1] == "0":
+				if board1.index(shipsp1[num][-1]) == 9 len(str(board1.index(shipsp1[num][-1]))) == 2 and str(board1.index(shipsp1[num][-1]))[1] == "9":
 					printboard(1, 0)
 					mov = input("Can't go there!\n")
-				shipsp1[num][shipsp1[num].index(piece)] = board1[board1.index(piece)+1]
+				else:
+					shipsp1[num][shipsp1[num].index(piece)] = board1[board1.index(piece)+1]
 		check(p1)
 		printboard(1, 0)
-		movit = input("\n\nDo you want to move it again? (y/n)\n")
-	ready = input("Are you ready to play? (y/n)\n")
+		movit = input("\n\nDo you want to move it again? (y/n)\n").upper()
+	ready = input("Are you ready to play? (y/n)\n").upper()
 
+print(p1, ", look away!", sep="")
+input("")
+
+check(p2)
+printboard(2, 0)
+print("\n", p2, ", this is your board!", sep="")
+input("I have randomly placed your five ships, but you can move and rotate each one of them as you'd like.\n")
+ready = "N"
+while ready == "N":
+	check(p2)
+	printboard(2, 0)
+	print("\n\nSelect a ship to move (Example: 3)\n")
+	num = int(input())-1
+	movit = "Y"
+	while movit == "Y":
+		print("Where do you want to move ship number ", num+1, "? (Use WASD followed by Enter)\n", sep="")
+		mov = input("").upper()
+		if len(mov) > 1:
+			mov = input("Please only type one direction\n").upper()
+			if mov == "W":
+				if board2.index(shipsp2[num][0]) < 10:
+					printboard(2, 0)
+					mov = input("Can't go there!\n")
+				else:
+					for piece in shipsp2[num]:
+						shipsp2[num][shipsp2[num].index(piece)] = board2[board2.index(piece)-10]
+			if mov == "S":
+				if board2.index(shipsp2[num][-1]) >= 90:
+					printboard(2, 0)
+					mov = input("Can't go there!\n")
+				else:
+					for piece in shipsp2[num]:
+						shipsp2[num][shipsp2[num].index(piece)] = board2[board2.index(piece)+10]
+			if mov == "A":
+				if board2.index(shipsp2[num][0]) == 0 or len(str(board2.index(shipsp2[num][0]))) == 2 and str(board2.index(shipsp2[0]))[1] == "0":
+					printboard(2, 0)
+					mov = input("Can't go there!\n")
+				else:
+					for piece in shipsp2[num]:
+						shipsp2[num][shipsp2[num].index(piece)] = board2[board2.index(piece)-1]
+			if mov == "D":
+				if board2.index(shipsp2[num][-1]) == 9 or len(str(board2.index(shipsp2[num][-1]))) == 2 and str(board2.index(shipsp2[num][-1]))[1] == "9":
+					printboard(2, 0)
+					mov = input("Can't go there!\n")
+				else:
+					for piece in shipsp2[num]
+						shipsp2[num][shipsp2[num].index(piece)] = board2[board2.index(piece)+1]
+		check(p2)
+		printboard(2, 0)
+		movit = input("\n\nDo you want to move it again? (y/n)\n").upper()
+	ready = input("Are you ready to play? (y/n)\n").upper()
+
+print(p2, ", look away!", sep="")
 roundis(p1)
 printboard(1, 0)
 printboard(2, 2)

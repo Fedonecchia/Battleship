@@ -467,8 +467,8 @@ while ready == "N":
 			if board1.index(shipsp1[num][0]) < 10:
 				printboard(1, 0)
 				mov = input("Can't go there!\n")
-			elif any(board1[board1.index(shipsp1[num][i])-10] in [item for item in S11+S12+S13+S21+S15 if item not in shipsp1[num]] for i in range(len(shipsp1[num]))):
-				printboard(2, 0)
+			elif any(board1[board1.index(shipsp1[num][i])-10] in [item for item in S11+S12+S13+S14+S15 if item not in shipsp1[num]] for i in range(len(shipsp1[num]))):
+				printboard(1, 0)
 				mov = input("Can't go there!\n")
 			else:
 				for piece in shipsp1[num]:
@@ -477,11 +477,17 @@ while ready == "N":
 			if board1.index(shipsp1[num][-1]) > 90:
 				printboard(1, 0)
 				mov = input("Can't go there!\n")
+			elif any(board1[board1.index(shipsp1[num][i])+10] in [item for item in S11+S12+S13+S21+S15 if item not in shipsp1[num]] for i in range(len(shipsp1[num]))):
+				printboard(1, 0)
+				mov = input("Can't go there!\n")
 			else:
 				for piece in reversed(shipsp1[num]):
 					shipsp1[num][shipsp1[num].index(piece)] = board1[board1.index(piece)+10]
 		if mov == "A":
-			if board1.index(shipsp1[num][0]) == 0 or len(str(board1.index(shipsp1[num][0]))) == 2 and str(board1.index(shipsp1[num][0]))[1] == 0:
+			if board1.index(shipsp1[num][0]) == 0 or len(str(board1.index(shipsp1[num][0]))) == 2 and str(board1.index(shipsp1[num][0]))[1] == "0":
+				printboard(1, 0)
+				mov = input("Can't go there!\n")
+			elif any(board1[board1.index(shipsp1[num][i])-1] in [item for item in S11+S12+S13+S21+S15 if item not in shipsp1[num]] for i in range(len(shipsp1[num]))):
 				printboard(1, 0)
 				mov = input("Can't go there!\n")
 			else:
@@ -489,6 +495,9 @@ while ready == "N":
 					shipsp1[num][shipsp1[num].index(piece)] = board1[board1.index(piece)-1]
 		if mov == "D":
 			if board1.index(shipsp1[num][-1]) == 9 or len(str(board1.index(shipsp1[num][-1]))) == 2 and str(board1.index(shipsp1[num][-1]))[1] == "9":
+				printboard(1, 0)
+				mov = input("Can't go there!\n")
+			elif any(board1[board1.index(shipsp1[num][i])+1] in [item for item in S11+S12+S13+S21+S15 if item not in shipsp1[num]] for i in range(len(shipsp1[num]))):
 				printboard(1, 0)
 				mov = input("Can't go there!\n")
 			else:
@@ -532,6 +541,9 @@ while ready == "N":
 			if board2.index(shipsp2[num][-1]) >= 90:
 				printboard(2, 0)
 				mov = input("Can't go there!\n")
+			elif any(board2[board2.index(shipsp2[num][i])+10] in [item for item in S21+S22+S23+S24+S25 if item not in shipsp2[num]] for i in range(len(shipsp2[num]))):
+				printboard(2, 0)
+				mov = input("Can't go there!\n")
 			else:
 				for piece in reversed(shipsp2[num]):
 					shipsp2[num][shipsp2[num].index(piece)] = board2[board2.index(piece)+10]
@@ -539,11 +551,17 @@ while ready == "N":
 			if board2.index(shipsp2[num][0]) == 0 or len(str(board2.index(shipsp2[num][0]))) == 2 and str(board2.index(shipsp2[num][0]))[1] == "0":
 				printboard(2, 0)
 				mov = input("Can't go there!\n")
+			elif any(board2[board2.index(shipsp2[num][i])-1] in [item for item in S21+S22+S23+S24+S25 if item not in shipsp2[num]] for i in range(len(shipsp2[num]))):
+				printboard(2, 0)
+				mov = input("Can't go there!\n")
 			else:
 				for piece in shipsp2[num]:
 					shipsp2[num][shipsp2[num].index(piece)] = board2[board2.index(piece)-1]
 		if mov == "D":
 			if board2.index(shipsp2[num][-1]) == 9 or len(str(board2.index(shipsp2[num][-1]))) == 2 and str(board2.index(shipsp2[num][-1]))[1] == "9":
+				printboard(2, 0)
+				mov = input("Can't go there!\n")
+			elif any(board2[board2.index(shipsp2[num][i])+1] in [item for item in S21+S22+S23+S24+S25 if item not in shipsp2[num]] for i in range(len(shipsp2[num]))):
 				printboard(2, 0)
 				mov = input("Can't go there!\n")
 			else:

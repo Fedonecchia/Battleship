@@ -204,41 +204,6 @@ J29 = ["  ", "J29", "  "]
 J210 = ["  ", "J210", "  "]
 
 
-cuz = """
-	   1      2      3      4      5      6      7      8      9      10
-	 ______ ______ ______ ______ ______ ______ ______ ______ ______ ______
-	|      |      |      |      |      |      |      |      |      |      |
- A  |  %s  |  %s  |  %s  |  %s  |  %s  |  %s  |  %s  |  %s  |  %s  |  %s  |
-	|______|______|______|______|______|______|______|______|______|______|
-	|      |      |      |      |      |      |      |      |      |      |
- B  |  %s  |  %s  |  %s  |  %s  |  %s  |  %s  |  %s  |  %s  |  %s  |  %s  |
-	|______|______|______|______|______|______|______|______|______|______|
-	|      |      |      |      |      |      |      |      |      |      |
- C  |  %s  |  %s  |  %s  |  %s  |  %s  |  %s  |  %s  |  %s  |  %s  |  %s  |
-	|______|______|______|______|______|______|______|______|______|______|
-	|      |      |      |      |      |      |      |      |      |      |
- D  |  %s  |  %s  |  %s  |  %s  |  %s  |  %s  |  %s  |  %s  |  %s  |  %s  |
-	|______|______|______|______|______|______|______|______|______|______|
-	|      |      |      |      |      |      |      |      |      |      |
- E  |  %s  |  %s  |  %s  |  %s  |  %s  |  %s  |  %s  |  %s  |  %s  |  %s  |
-	|______|______|______|______|______|______|______|______|______|______|
-	|      |      |      |      |      |      |      |      |      |      |
- F  |  %s  |  %s  |  %s  |  %s  |  %s  |  %s  |  %s  |  %s  |  %s  |  %s  |
-	|______|______|______|______|______|______|______|______|______|______|
-	|      |      |      |      |      |      |      |      |      |      |
- G  |  %s  |  %s  |  %s  |  %s  |  %s  |  %s  |  %s  |  %s  |  %s  |  %s  |
-	|______|______|______|______|______|______|______|______|______|______|
-	|      |      |      |      |      |      |      |      |      |      |
- H  |  %s  |  %s  |  %s  |  %s  |  %s  |  %s  |  %s  |  %s  |  %s  |  %s  |
-	|______|______|______|______|______|______|______|______|______|______|
-	|      |      |      |      |      |      |      |      |      |      |
- I  |  %s  |  %s  |  %s  |  %s  |  %s  |  %s  |  %s  |  %s  |  %s  |  %s  |
-	|______|______|______|______|______|______|______|______|______|______|
-	|      |      |      |      |      |      |      |      |      |      |
- J  |  %s  |  %s  |  %s  |  %s  |  %s  |  %s  |  %s  |  %s  |  %s  |  %s  |
-	|______|______|______|______|______|______|______|______|______|______| """
-
-
 board1 = [A11, A12, A13, A14, A15, A16, A17, A18, A19, A110, B11, B12, B13, B14, B15, B16, B17, B18, B19, B110, C11, C12, C13, C14, C15, C16, C17, C18, C19, C110, D11, D12, D13, D14, D15, D16, D17, D18, D19, D110, E11, E12, E13, E14, E15, E16, E17, E18, E19, E110, F11, F12, F13, F14, F15, F16, F17, F18, F19, F110, G11, G12, G13, G14, G15, G16, G17, G18, G19, G110, H11, H12, H13, H14, H15, H16, H17, H18, H19, H110, I11, I12, I13, I14, I15, I16, I17, I18, I19, I110, J11, J12, J13, J14, J15, J16, J17, J18, J19, J110]
 
 board2 = [A21, A22, A23, A24, A25, A26, A27, A28, A29, A210, B21, B22, B23, B24, B25, B26, B27, B28, B29, B210, C21, C22, C23, C24, C25, C26, C27, C28, C29, C210, D21, D22, D23, D24, D25, D26, D27, D28, D29, D210, E21, E22, E23, E24, E25, E26, E27, E28, E29, E210, F21, F22, F23, F24, F25, F26, F27, F28, F29, F210, G21, G22, G23, G24, G25, G26, G27, G28, G29, G210, H21, H22, H23, H24, H25, H26, H27, H28, H29, H210, I21, I22, I23, I24, I25, I26, I27, I28, I29, I210, J21, J22, J23, J24, J25, J26, J27, J28, J29, J210]
@@ -453,7 +418,6 @@ print("\n", p1, ", this is your board!", sep="")
 input("I have randomly placed your five ships, but you can move and rotate each one of them as you'd like.\n")
 ready = "N"
 while ready == "N":
-	check(p1)
 	printboard(1, 0)
 	print("\n\nSelect a ship to move (Example: 3)\n")
 	num = int(input())-1
@@ -473,7 +437,7 @@ while ready == "N":
 			else:
 				for piece in shipsp1[num]:
 					shipsp1[num][shipsp1[num].index(piece)] = board1[board1.index(piece)-10]
-		if mov == "S":
+		elif mov == "S":
 			if board1.index(shipsp1[num][-1]) > 90:
 				printboard(1, 0)
 				mov = input("Can't go there!\n")
@@ -483,7 +447,7 @@ while ready == "N":
 			else:
 				for piece in reversed(shipsp1[num]):
 					shipsp1[num][shipsp1[num].index(piece)] = board1[board1.index(piece)+10]
-		if mov == "A":
+		elif mov == "A":
 			if board1.index(shipsp1[num][0]) == 0 or len(str(board1.index(shipsp1[num][0]))) == 2 and str(board1.index(shipsp1[num][0]))[1] == "0":
 				printboard(1, 0)
 				mov = input("Can't go there!\n")
@@ -493,7 +457,7 @@ while ready == "N":
 			else:
 				for piece in shipsp1[num]:
 					shipsp1[num][shipsp1[num].index(piece)] = board1[board1.index(piece)-1]
-		if mov == "D":
+		elif mov == "D":
 			if board1.index(shipsp1[num][-1]) == 9 or len(str(board1.index(shipsp1[num][-1]))) == 2 and str(board1.index(shipsp1[num][-1]))[1] == "9":
 				printboard(1, 0)
 				mov = input("Can't go there!\n")
@@ -503,9 +467,30 @@ while ready == "N":
 			else:
 				for piece in reversed(shipsp1[num]):
 					shipsp1[num][shipsp1[num].index(piece)] = board1[board1.index(piece)+1]
+		elif mov == "R":
+			if board1.index(shipsp1[num][1])-board1.index(shipsp1[num][0]) == 1:
+				if any(board1[board1.index(shipsp1[num][i])+10*i-i] in [item for item in S11+S12+S13+S14+S15 if item not in shipsp1[num]] for i in range(len(shipsp1[num]), 0)):
+					printboard(1, 0)
+					mov = input("Can't go there!\n")
+				# elif:
+				else:
+					for piece in shipsp1[num]:
+						i = shipsp1[num].index(piece)
+						shipsp1[num][i] = board1[board1.index(piece)+10*i-i]
+			elif board1.index(shipsp1[num][1])-board1.index(shipsp1[num][0]) == 10:
+				if any(board1[board1.index(shipsp1[num][i])+10*i+i] in [item for item in S11+S12+S13+S14+S15 if item not in shipsp1[num]] for i in range(len(shipsp1[num]))):
+					printboard(1, 0)
+					mov = input("Can't go there!\n")
+				# elif:
+				else:
+					for piece in reversed(shipsp1[num]):
+						i = len(shipsp1[num])-1-shipsp1[num].index(piece)
+						shipsp1[num][shipsp1[num].index(piece)] = board1[board1.index(piece)+10*i+i]
+					shipsp1[num] = [item for item in reversed(shipsp1[num])]
 		check(p1)
 		printboard(1, 0)
 		movit = input("\n\nDo you want to move it again? (y/n)\n").upper()
+		print(shipsp1[num])
 	ready = input("Are you ready to play? (y/n)\n").upper()
 
 print(p1, ", look away!", sep="")
